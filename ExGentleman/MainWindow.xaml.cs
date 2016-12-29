@@ -16,5 +16,10 @@ namespace ExGentleman
             InitializeComponent();
             this.MetroDialogOptions.ColorScheme = MetroDialogColorScheme.Accented;
         }
+
+        private void btnFOs_Click(object sender, RoutedEventArgs e)
+        {
+            fo1.IsOpen = !fo1.IsOpen;
+        }
     }
 }

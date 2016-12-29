@@ -11,7 +11,7 @@
         mc:Ignorable="d"
         Title="ExGentleman" Height="350" Width="525"
         GlowBrush="{DynamicResource AccentColorBrush}"
-        WindowStartupLocation="CenterScreen"
+        WindowStartupLocation="CenterScreen"                    
         >
     
     <Controls:MetroWindow.WindowButtonCommands>
@@ -36,12 +36,44 @@
 
     <Controls:MetroWindow.LeftWindowCommands>
         <Controls:WindowCommands>
-            <Button Width="25" Height="25" Margin="1 0 0 0 " Content="{iconPacks:PackIconFontAwesome Cog, Height=20, Width=20, Spin=True, SpinDuration=5 }"/>
+            <Button Width="25" Height="25" Margin="1 0 0 0 " 
+                            Content="{iconPacks:PackIconFontAwesome Cog, Height=20, Width=20, Spin=True, SpinDuration=5 }"/>
         </Controls:WindowCommands>
     </Controls:MetroWindow.LeftWindowCommands>
 
+    <Controls:MetroWindow.Flyouts>
+        <Controls:FlyoutsControl>
+            <Controls:Flyout Name="fo1" Header="Flyout" Position="Right" Width="300" Margin="0 15 0 0" 
+                                           Controls:ControlsHelper.ContentCharacterCasing="Upper">
+                <Grid>
+                    <Image Source="C:\Users\weizhen\Pictures\passion_flower_by_Irene_Gr.jpg" />
+                </Grid>
+            </Controls:Flyout>
+        </Controls:FlyoutsControl>
+    </Controls:MetroWindow.Flyouts>
+
     <Grid>
+        <Grid.Resources>
+            <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource MetroTextBox}">
+                <Setter Property="Validation.ErrorTemplate" Value="{x:Null}" />
+            </Style>
+
+            <ControlTemplate x:Key="errorTemplate">
+                <DockPanel>
+                    <Border BorderBrush="Red" BorderThickness="1">
+                        <AdornedElementPlaceholder x:Name="controlWithError"/>
+                    </Border>
+                    <TextBlock Foreground="Red" FontSize="20" FontFamily="Segoe UI" Margin="3,0,0,0" Tag="{Binding AdornedElement.(Validation.Errors)[0].ErrorContent, ElementName=controlWithError}">!</TextBlock>
+                </DockPanel>
+            </ControlTemplate>
+        </Grid.Resources>
         
-        
+        <Button Content="showFlyOuts" Width="130" Height="50" Name="btnFOs" Click="btnFOs_Click" HorizontalAlignment="Left" Margin="10,65,0,0" VerticalAlignment="Top" d:LayoutOverrides="Height" />
+        <TextBox Controls:TextBoxHelper.Watermark="Name" 
+                           Controls:TextBoxHelper.ClearTextButton="True"
+                            Validation.ErrorTemplate="{StaticResource errorTemplate}"
+                           Margin="10,10,0,0" Height="50" VerticalAlignment="Top" HorizontalAlignment="Left" Width="130">
+
+        </TextBox>
     </Grid>
 </Controls:MetroWindow>
