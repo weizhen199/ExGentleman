@@ -33,7 +33,7 @@
 
     <controls:MetroWindow.LeftWindowCommands>
         <controls:WindowCommands>
-            <Button Width="25" Height="25" Margin="1 0 0 0 " 
+            <Button Width="25" Height="25" Margin="1 0 0 0" 
                             Content="{iconPacks:PackIconFontAwesome Cog, Height=20, Width=20, Spin=True, SpinDuration=5 }"/>
         </controls:WindowCommands>
     </controls:MetroWindow.LeftWindowCommands>
