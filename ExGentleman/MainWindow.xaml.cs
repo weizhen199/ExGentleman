@@ -1,8 +1,6 @@
 ﻿using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
-using System;
 using System.Windows;
-using System.Windows.Input;
 
 namespace ExGentleman
 {
@@ -11,8 +9,13 @@ namespace ExGentleman
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
+        private readonly MainWindowViewModel _viewModel;
+
         public MainWindow()
         {
+            _viewModel = new MainWindowViewModel();
+            DataContext = _viewModel;
+
             InitializeComponent();
             this.MetroDialogOptions.ColorScheme = MetroDialogColorScheme.Accented;
         }
@@ -21,5 +24,7 @@ namespace ExGentleman
         {
             fo1.IsOpen = !fo1.IsOpen;
         }
+
+
     }
 }
