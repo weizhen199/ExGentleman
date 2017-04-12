@@ -12,7 +12,7 @@ namespace ExGentleman
         private int? _integerGreater10Property;
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public int? IntegerGreater10Property
+        private int? IntegerGreater10Property
         {
             get { return this._integerGreater10Property; }
             set
@@ -48,6 +48,6 @@ namespace ExGentleman
             }
         }
 
-        public string Error { get { return string.Empty; } }
+        public string Error => string.Empty;
     }
 }
