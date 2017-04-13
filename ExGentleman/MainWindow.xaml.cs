@@ -1,6 +1,9 @@
-﻿using MahApps.Metro.Controls;
+﻿using System;
+using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
 using System.Windows;
+using ExGentleman.Models;
+using System.Collections.Generic;
 
 namespace ExGentleman
 {
@@ -13,16 +16,29 @@ namespace ExGentleman
 
         public MainWindow()
         {
-            _viewModel = new MainWindowViewModel();
-            DataContext = _viewModel;
+            DataContext = _viewModel = new MainWindowViewModel();
 
             InitializeComponent();
+
             this.MetroDialogOptions.ColorScheme = MetroDialogColorScheme.Accented;
+
+            LoadData();
         }
 
         private void btnFOs_Click(object sender, RoutedEventArgs e)
         {
-            fo1.IsOpen = !fo1.IsOpen;
+            Fo1.IsOpen = !Fo1.IsOpen;
+        }
+
+        private void LoadData()
+        {
+            var rows = new List<People>()
+            {
+                new People(){EmpNo = "021867", EmpNme = "Jack", BirthDate = DateTime.Now},
+                new People(){EmpNo = "024835", EmpNme = "Jack", BirthDate = DateTime.Now},
+            };
+
+            DataGridTest.ItemsSource = rows;
         }
 
 

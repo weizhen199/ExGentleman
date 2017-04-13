@@ -3,14 +3,25 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
-                      xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
-                      mc:Ignorable="d"
+        xmlns:controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:iconPacks="clr-namespace:MahApps.Metro.IconPacks;assembly=MahApps.Metro.IconPacks"
+        xmlns:exGentleman="clr-namespace:ExGentleman"
+        mc:Ignorable="d"
         Title="ExGentleman" Height="350" Width="525"
         GlowBrush="{DynamicResource AccentColorBrush}"
-        WindowStartupLocation="CenterScreen"                    
-        >
+        WindowStartupLocation="CenterScreen"
+        d:DataContext="{d:DesignInstance exGentleman:MainWindowViewModel}">
+
+
+    <controls:MetroWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.DataGrid.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </controls:MetroWindow.Resources>
     
+    <!--标题栏-->
     <controls:MetroWindow.WindowButtonCommands>
         <controls:WindowButtonCommands Template="{DynamicResource MahApps.Metro.Templates.WindowButtonCommands.Win10}" />
     </controls:MetroWindow.WindowButtonCommands>
@@ -33,15 +44,14 @@
 
     <controls:MetroWindow.LeftWindowCommands>
         <controls:WindowCommands>
-            <Button Width="25" Height="25" Margin="1 0 0 0" 
-                            Content="{iconPacks:PackIconFontAwesome Cog, Height=20, Width=20, Spin=True, SpinDuration=5 }"/>
+            <Button Width="25" Height="25" Margin="1 0 0 0" Content="{iconPacks:PackIconFontAwesome Cog, Height=20, Width=20, Spin=True, SpinDuration=5 }"/>
         </controls:WindowCommands>
     </controls:MetroWindow.LeftWindowCommands>
 
+    <!--飞入Page-->
     <controls:MetroWindow.Flyouts>
         <controls:FlyoutsControl>
-            <controls:Flyout Name="fo1" Header="Flyout" Position="Right" Width="300" Margin="0 15 0 0" 
-                                           controls:ControlsHelper.ContentCharacterCasing="Normal">
+            <controls:Flyout Name="Fo1" Header="Flyout" Position="Right" Width="300" Margin="0 15 0 0" controls:ControlsHelper.ContentCharacterCasing="Normal">
                 <Grid>
                     <Image Source="C:\Users\weizh\Pictures\png.png" />
                 </Grid>
@@ -49,12 +59,26 @@
         </controls:FlyoutsControl>
     </controls:MetroWindow.Flyouts>
 
+    <!--右键菜单-->
+    <controls:MetroWindow.ContextMenu>
+        <ContextMenu>
+            <MenuItem Command="ApplicationCommands.New" />
+            <MenuItem Command="ApplicationCommands.Delete" />
+            <MenuItem Command="ApplicationCommands.Print" />
+        </ContextMenu>
+    </controls:MetroWindow.ContextMenu>
+
     <Grid>
-        <Button Content="showFlyOuts" Width="130" Height="50" Name="btnFOs" Click="btnFOs_Click" HorizontalAlignment="Left" Margin="10,65,0,0" VerticalAlignment="Top" d:LayoutOverrides="Height" />
-        <TextBox controls:TextBoxHelper.Watermark="Name" 
-                 controls:TextBoxHelper.ClearTextButton="True" 
-                 Margin="10,10,0,0" Height="50" VerticalAlignment="Top" HorizontalAlignment="Left" Width="130"
-                 Text="{Binding IntegerGreater10Property, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True}"
-                 />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        
+        <Button Grid.Row="0" Content="showFlyOuts" Width="110" Height="30" Click="btnFOs_Click" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" />
+        <DataGrid Grid.Row="1" Name="DataGridTest" Margin="10,10,10,10" AutoGenerateColumns="True" Style="{StaticResource MetroDataGrid}">
+
+        </DataGrid>
     </Grid>
+
 </controls:MetroWindow>

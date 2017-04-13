@@ -12,7 +12,7 @@ namespace ExGentleman
         private int? _integerGreater10Property;
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private int? IntegerGreater10Property
+        public int? IntegerGreater10Property
         {
             get { return this._integerGreater10Property; }
             set
