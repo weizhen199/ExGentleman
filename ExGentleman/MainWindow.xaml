@@ -76,8 +76,10 @@
         </Grid.RowDefinitions>
         
         <Button Grid.Row="0" Content="showFlyOuts" Width="110" Height="30" Click="btnFOs_Click" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" />
-        <DataGrid Grid.Row="1" Name="DataGridTest" Margin="10,10,10,10" AutoGenerateColumns="True" Style="{StaticResource MetroDataGrid}">
-
+        <DataGrid Grid.Row="1" ItemsSource="{Binding Peoples}" Margin="10,10,10,10" AutoGenerateColumns="False" Style="{StaticResource MetroDataGrid}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding EmpNo}" Header="EmpNo" />
+            </DataGrid.Columns>
         </DataGrid>
     </Grid>
 

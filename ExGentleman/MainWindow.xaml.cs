@@ -16,13 +16,12 @@ namespace ExGentleman
 
         public MainWindow()
         {
-            DataContext = _viewModel = new MainWindowViewModel();
+            _viewModel = new MainWindowViewModel();
+            DataContext = _viewModel;
 
             InitializeComponent();
 
             this.MetroDialogOptions.ColorScheme = MetroDialogColorScheme.Accented;
-
-            LoadData();
         }
 
         private void btnFOs_Click(object sender, RoutedEventArgs e)
@@ -30,16 +29,6 @@ namespace ExGentleman
             Fo1.IsOpen = !Fo1.IsOpen;
         }
 
-        private void LoadData()
-        {
-            var rows = new List<People>()
-            {
-                new People(){EmpNo = "021867", EmpNme = "Jack", BirthDate = DateTime.Now},
-                new People(){EmpNo = "024835", EmpNme = "Jack", BirthDate = DateTime.Now},
-            };
-
-            DataGridTest.ItemsSource = rows;
-        }
 
 
     }
