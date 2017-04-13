@@ -13,8 +13,7 @@ namespace ExGentleman
 
         public MainWindow()
         {
-            _viewModel = new MainWindowViewModel();
-            DataContext = _viewModel;
+            DataContext =_viewModel = new MainWindowViewModel();
 
             InitializeComponent();
             this.MetroDialogOptions.ColorScheme = MetroDialogColorScheme.Accented;
