@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ExGentleman.Models;
 
 namespace ExGentleman
 {
@@ -12,7 +13,7 @@ namespace ExGentleman
         private int? _integerGreater10Property;
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private int? IntegerGreater10Property
+        public int? IntegerGreater10Property
         {
             get { return this._integerGreater10Property; }
             set
@@ -42,5 +43,11 @@ namespace ExGentleman
         }
 
         public string Error => string.Empty;
+
+        public List<People> Peoples { get; set; } = new List<People>()
+        {
+            new People(){EmpNo = "021867", EmpNme = "Jack", BirthDate = DateTime.Now},
+            new People(){EmpNo = "024835", EmpNme = "Jack", BirthDate = DateTime.Now},
+        };
     }
 }

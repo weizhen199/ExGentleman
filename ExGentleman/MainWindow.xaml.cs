@@ -1,6 +1,9 @@
-﻿using MahApps.Metro.Controls;
+﻿using System;
+using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
 using System.Windows;
+using ExGentleman.Models;
+using System.Collections.Generic;
 
 namespace ExGentleman
 {
@@ -16,13 +19,15 @@ namespace ExGentleman
             DataContext =_viewModel = new MainWindowViewModel();
 
             InitializeComponent();
+
             this.MetroDialogOptions.ColorScheme = MetroDialogColorScheme.Accented;
         }
 
         private void btnFOs_Click(object sender, RoutedEventArgs e)
         {
-            fo1.IsOpen = !fo1.IsOpen;
+            Fo1.IsOpen = !Fo1.IsOpen;
         }
+
 
 
     }
